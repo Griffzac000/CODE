@@ -1,0 +1,208 @@
+body {
+    margin: 0;
+    background-color: black;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+    perspective: 1000px;
+}
+
+.orbit-ring {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    animation: none;
+    transform-origin: center center;
+    transform: transform 0.8s ease-in-out;
+}
+
+.planet {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform-origin: center center;
+}
+
+#stars {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+#earth{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    box-shadow: inset -30px -10px 60px rgba(0,0,0,0.7),
+    inset 10px 5px 40px rgba(255, 255, 255, 0.1),
+    0 0 60px rgba(0,100,255,0.3);
+    overflow: hidden;
+    background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgclfTNkUcsfC0c2bVoKVjELv2pki_YYLCSD99BpC5IfzU9W9sH6kG7JcF07c6bxsVD4LnAH2PDkUQrN24mT_uedwjGm6onOmAJNMRbptuzkgAXqsTVFbFB4W6XkPaGuwDpflBf6ULJQhKs/w1200-h630-p-k-no-nu/1.jpg);
+    animation: rotate 2s linear infinite;
+
+}
+
+.space-wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;  /* hides the scrollbars */
+    position: fixed;
+    cursor: grab;      /* shows grab cursor */
+}
+
+.space-canvas {
+    width: 4000px;     /* huge canvas to roam around */
+    height: 4000px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#earth:hover{
+    background-color: #ffffffbb;
+    transition: background-color 1.5s ease;
+    transform: scale(1.1);
+    box-shadow: inset -30px -10px 60px rgba(0,0,0,0.7),
+    inset 10px 5px 40px rgba(255, 255, 255, 0.1),
+    0 0 60px rgba(0,100,255,0.3);
+    overflow: hidden;
+}
+
+#earth::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 30;
+    width: 255;
+    height: 60px;
+    background: rgba(0,0,0,0.7);
+    filter: blur(12px);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+}
+
+#earth::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image: url('clouds.png'); 
+  background-size: 200% 100%;
+  opacity: 0.4;
+  animation: rotate 14s linear infinite;
+}
+
+@keyframes rotate {
+    from {background-position: 0 center; }
+    to {background-position: -600px center; }
+    
+}
+
+.main-container {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    height: 100vh;
+}
+
+.planet-1, .planet-2, .planet-3, .planet-4, .planet-5 {
+  flex-shrink: 0;          
+  width: 100vw;           
+  height: 100vh;
+  scroll-snap-align: start;
+  z-index: 1;
+}
+
+.planet-1 { transform: translate(-50%, -50%) rotate(0deg)   translateX(800px); background: red;    }
+.planet-2 { transform: translate(-50%, -50%) rotate(72deg)  translateX(800px); background: blue;   }
+.planet-3 { transform: translate(-50%, -50%) rotate(144deg) translateX(800px); background: green;  }
+.planet-4 { transform: translate(-50%, -50%) rotate(216deg) translateX(800px); background: purple; }
+.planet-5 { transform: translate(-50%, -50%) rotate(288deg) translateX(800px); background: orange; }
+
+.planet-1,
+.planet-2,
+.planet-3,
+.planet-4,
+.planet-5{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    box-shadow: inset -30px -10px 60px rgba(0,0,0,0.7),
+    inset 10px 5px 40px rgba(255, 255, 255, 0.1),
+    0 0 60px rgba(0,100,255,0.3);
+    overflow: hidden;
+    background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgclfTNkUcsfC0c2bVoKVjELv2pki_YYLCSD99BpC5IfzU9W9sH6kG7JcF07c6bxsVD4LnAH2PDkUQrN24mT_uedwjGm6onOmAJNMRbptuzkgAXqsTVFbFB4W6XkPaGuwDpflBf6ULJQhKs/w1200-h630-p-k-no-nu/1.jpg);
+    animation: rotate 20s linear infinite;
+
+}
+
+.planet-1,
+.planet-2,
+.planet-3,
+.planet-4,
+.planet-5:hover{
+    background-color: #ffffffbb;
+    transition: background-color 1.5s ease;
+    transform: scale(1.1);
+    box-shadow: inset -30px -10px 60px rgba(0,0,0,0.7),
+    inset 10px 5px 40px rgba(255, 255, 255, 0.1),
+    0 0 60px rgba(0,100,255,0.3);
+    overflow: hidden;
+}
+
+.planet-1,
+.planet-2,
+.planet-3,
+.planet-4,
+.planet-5::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 30;
+    width: 255;
+    height: 60px;
+    background: rgba(0,0,0,0.7);
+    filter: blur(12px);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+}
+
+.planet-1,
+.planet-2,
+.planet-3,
+.planet-4,
+.planet-5::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image: url('clouds.png'); 
+  background-size: 200% 100%;
+  opacity: 0.4;
+  animation: rotate 14s linear infinite;
+}
+
+@keyframes rotate {
+    from {background-position: 0 center; }
+    to {background-position: -600px center; }
+    
+}
+
+
