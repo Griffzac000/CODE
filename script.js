@@ -21,25 +21,6 @@ function createStars(count) {
 
 createStars(1500);
 
-const orbitRing = document.querySelector('.orbit-ring');
-let currentAngle = 0;
-let isScrolling = false
-
-window.addEventListener('wheel', (e) => {
-  e.preventDefault();
-
-  if (isScrolling) return
-  isScrolling = true;
-
-  const direction = e.deltaY > 0 ? 1 : -1;
-  currentAngle += direction * 72; 
-
-  orbitRing.style.transform = `rotate(${currentAngle}deg)`;
-
- setTimeout(() => {
-        isScrolling = false;
-    }, 900);
-}, { passive: false });
 
 const wrapper = document.querySelector('.space-wrapper');
 const canvas = document.querySelector('.space-canvas');
@@ -92,3 +73,15 @@ wrapper.addEventListener('wheel', (e) => {
     targetX -= e.deltaX;
     targetY -= e.deltaY;
 }, { passive: false });
+
+const introScreen = document.getElementById('introScreen');
+
+// total intro time: roughly when both text lines finish their animation
+setTimeout(() => {
+    introScreen.classList.add('fade-out');
+}, 7000); // adjust this to match how long you want the intro visible
+
+// fully remove it from the page after the fade-out finishes
+setTimeout(() => {
+    introScreen.remove();
+}, 8500);

@@ -3,68 +3,27 @@ body {
     background-color: black;
     overflow: hidden;
     height: 100vh;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    position: relative;
-    z-index: 1;
-    perspective: 1000px;
-}
-
-.orbit-ring {
-    position: absolute;
-    width: 800px;
-    height: 800px;
-    border-radius: 50%;
-    border: 1px dashed rgba(255, 255, 255, 0.1);
-    animation: none;
-    transform-origin: center center;
-    transform: transform 0.8s ease-in-out;
-}
-
-.planet {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform-origin: center center;
-}
-
-#stars {
-    position: absolute;
+.stars {
+    position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -1;
 }
 
-#earth{
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    box-shadow: inset -30px -10px 60px rgba(0,0,0,0.7),
-    inset 10px 5px 40px rgba(255, 255, 255, 0.1),
-    0 0 60px rgba(0,100,255,0.3);
-    overflow: hidden;
-    background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgclfTNkUcsfC0c2bVoKVjELv2pki_YYLCSD99BpC5IfzU9W9sH6kG7JcF07c6bxsVD4LnAH2PDkUQrN24mT_uedwjGm6onOmAJNMRbptuzkgAXqsTVFbFB4W6XkPaGuwDpflBf6ULJQhKs/w1200-h630-p-k-no-nu/1.jpg);
-    animation: rotate 2s linear infinite;
-
-}
 
 .space-wrapper {
     width: 100vw;
     height: 100vh;
-    overflow: hidden;  /* hides the scrollbars */
+    overflow: hidden;
     position: fixed;
-    cursor: grab;      /* shows grab cursor */
+    cursor: grab;
+    perspective: 1000px;
 }
 
 .space-canvas {
-    width: 4000px;     /* huge canvas to roam around */
+    width: 4000px;
     height: 4000px;
     position: relative;
     display: flex;
@@ -72,137 +31,141 @@ body {
     align-items: center;
 }
 
-#earth:hover{
-    background-color: #ffffffbb;
-    transition: background-color 1.5s ease;
-    transform: scale(1.1);
-    box-shadow: inset -30px -10px 60px rgba(0,0,0,0.7),
-    inset 10px 5px 40px rgba(255, 255, 255, 0.1),
-    0 0 60px rgba(0,100,255,0.3);
-    overflow: hidden;
+.center {
+    position: relative;
+    transform: rotateX(55deg) scale(1.8);
 }
 
-#earth::before {
-    content: '';
+#earth {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
     position: absolute;
-    top: 30px;
-    left: 30;
-    width: 255;
-    height: 60px;
-    background: rgba(0,0,0,0.7);
-    filter: blur(12px);
-    border-radius: 50%;
-    animation: rotate 20s linear infinite;
-}
-
-#earth::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background-image: url('clouds.png'); 
-  background-size: 200% 100%;
-  opacity: 0.4;
-  animation: rotate 14s linear infinite;
-}
-
-@keyframes rotate {
-    from {background-position: 0 center; }
-    to {background-position: -600px center; }
-    
-}
-
-.main-container {
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    width: 100%;
-    height: 100vh;
-}
-
-.planet-1, .planet-2, .planet-3, .planet-4, .planet-5 {
-  flex-shrink: 0;          
-  width: 100vw;           
-  height: 100vh;
-  scroll-snap-align: start;
-  z-index: 1;
-}
-
-.planet-1 { transform: translate(-50%, -50%) rotate(0deg)   translateX(800px); background: red;    }
-.planet-2 { transform: translate(-50%, -50%) rotate(72deg)  translateX(800px); background: blue;   }
-.planet-3 { transform: translate(-50%, -50%) rotate(144deg) translateX(800px); background: green;  }
-.planet-4 { transform: translate(-50%, -50%) rotate(216deg) translateX(800px); background: purple; }
-.planet-5 { transform: translate(-50%, -50%) rotate(288deg) translateX(800px); background: orange; }
-
-.planet-1,
-.planet-2,
-.planet-3,
-.planet-4,
-.planet-5{
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    box-shadow: inset -30px -10px 60px rgba(0,0,0,0.7),
-    inset 10px 5px 40px rgba(255, 255, 255, 0.1),
-    0 0 60px rgba(0,100,255,0.3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
     overflow: hidden;
+    box-shadow:
+        inset -30px -10px 60px rgba(0,0,0,0.7),
+        inset 10px 5px 40px rgba(255,255,255,0.1),
+        0 0 60px rgba(0,100,255,0.3);
     background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgclfTNkUcsfC0c2bVoKVjELv2pki_YYLCSD99BpC5IfzU9W9sH6kG7JcF07c6bxsVD4LnAH2PDkUQrN24mT_uedwjGm6onOmAJNMRbptuzkgAXqsTVFbFB4W6XkPaGuwDpflBf6ULJQhKs/w1200-h630-p-k-no-nu/1.jpg);
     animation: rotate 20s linear infinite;
-
 }
 
-.planet-1,
-.planet-2,
-.planet-3,
-.planet-4,
-.planet-5:hover{
+#earth:hover {
     background-color: #ffffffbb;
     transition: background-color 1.5s ease;
-    transform: scale(1.1);
-    box-shadow: inset -30px -10px 60px rgba(0,0,0,0.7),
-    inset 10px 5px 40px rgba(255, 255, 255, 0.1),
-    0 0 60px rgba(0,100,255,0.3);
-    overflow: hidden;
-}
-
-.planet-1,
-.planet-2,
-.planet-3,
-.planet-4,
-.planet-5::before {
-    content: '';
-    position: absolute;
-    top: 30px;
-    left: 30;
-    width: 255;
-    height: 60px;
-    background: rgba(0,0,0,0.7);
-    filter: blur(12px);
-    border-radius: 50%;
-    animation: rotate 20s linear infinite;
-}
-
-.planet-1,
-.planet-2,
-.planet-3,
-.planet-4,
-.planet-5::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background-image: url('clouds.png'); 
-  background-size: 200% 100%;
-  opacity: 0.4;
-  animation: rotate 14s linear infinite;
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
 @keyframes rotate {
-    from {background-position: 0 center; }
-    to {background-position: -600px center; }
-    
+    from { background-position: 0 center; }
+    to   { background-position: -600px center; }
 }
 
+.orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin linear infinite;
+}
 
+.ring-1 { width: 300px; height: 300px; animation-duration: 6s; }
+.ring-2 { width: 450px; height: 450px; animation-duration: 10s; }
+.ring-3 { width: 600px; height: 600px; animation-duration: 14s; }
+.ring-4 { width: 750px; height: 750px; animation-duration: 18s; }
+.ring-5 { width: 900px; height: 900px; animation-duration: 22s; }
+
+@keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.planet {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+.planet-1 { background: orange; }
+.planet-2 { background: lightblue; }
+.planet-3 { background: green; }
+.planet-4 { background: purple; }
+.planet-5 { background: tan; }
+
+.intro-screen {
+    position: fixed;
+    inset: 0;
+    background: black;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.intro-mp4 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.intro-text {
+    position: relative;
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+    z-index: 1;
+}
+
+.intro-text h1,
+.intro-text h2 {
+    margin: 10px 0;
+    opacity: 0;
+    transform: scale(0.2);  
+    text-shadow: 0 0 20px rgba(255,255,255,0.8);
+}
+
+/* first line: zooms in from far away, holds, then zooms back out */
+.line-1 {
+    font-size: 5rem;
+    animation: textTravel 2s ease-in-out forwards;
+    animation-delay: 0.6s;
+}
+
+.line-2 {
+    font-size: 3rem;
+    animation: textTravel 5s ease-in-out forwards;
+    animation-delay: 3s;
+}
+
+@keyframes textTravel {
+    0%   { opacity: 0; transform: scale(0.2); }   /* far away, invisible */
+    20%  { opacity: 1; transform: scale(1.2); }   /* flies toward viewer, overshoots slightly */
+    30%  { opacity: 1; transform: scale(1); }     /* settles to normal size */
+    70%  { opacity: 1; transform: scale(1); }     /* holds in place */
+    100% { opacity: 0; transform: scale(2.5); }   /* flies past viewer, fades out */
+}
+
+/* fades out the whole intro screen once it's done */
+.intro-screen.fade-out {
+    animation: fadeOutScreen 1.5s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes fadeOutScreen {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}

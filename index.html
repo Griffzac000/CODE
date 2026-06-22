@@ -10,22 +10,39 @@
 </head>
 
 <body>
-<div class="stars"></div>
+    <div class="intro-screen" id="introScreen">
+        <video src="intro.mp4" class="intro-mp4" autoplay loop muted playsinline></video>
+        <div class="intro-text">
+            <h1 class="line-1">Hello I'm Zachai</h1>
+            <h2 class="line-2">And this is my portfolio.</h2>
+        </div>
+    </div>
 
-<div class="space-wrapper">
-    <div class="space-canvas">
-        <div class="center">
-            <div id="earth"></div>
-            <div class="orbit-ring">
-                <div class="planet-1 planet"></div>
-                <div class="planet-2 planet"></div>
-                <div class="planet-3 planet"></div>
-                <div class="planet-4 planet"></div>
-                <div class="planet-5 planet"></div>
+    <div class="stars" id="stars"></div>
+
+    <div class="space-wrapper">
+        <div class="space-canvas">
+            <div class="center">
+                <div id="earth"></div>
+
+                <div class="orbit-ring ring-1">
+                    <div class="planet planet-1"></div>
+                </div>
+                <div class="orbit-ring ring-2">
+                    <div class="planet planet-2"></div>
+                </div>
+                <div class="orbit-ring ring-3">
+                    <div class="planet planet-3"></div>
+                </div>
+                <div class="orbit-ring ring-4">
+                    <div class="planet planet-4"></div>
+                </div>
+                <div class="orbit-ring ring-5">
+                    <div class="planet planet-5"></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 
 </html>
