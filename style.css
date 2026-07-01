@@ -126,12 +126,12 @@ body {
 
 .earth {
     background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgclfTNkUcsfC0c2bVoKVjELv2pki_YYLCSD99BpC5IfzU9W9sH6kG7JcF07c6bxsVD4LnAH2PDkUQrN24mT_uedwjGm6onOmAJNMRbptuzkgAXqsTVFbFB4W6XkPaGuwDpflBf6ULJQhKs/w1200-h630-p-k-no-nu/1.jpg);
-    background-size: 200% 100%; 
-    animation: spinPlanet 8s linear infinite, planetPulse 2s infinite ease-in-out, counter-spin 25s linear infinite;
+    background-size: 200% 100%;
     box-shadow:
-        inset -30px -10px 60px rgba(0,0,0,0.7),
-        inset 10px 5px 40px rgba(255,255,255,0.1),
-        0 0 60px rgba(0,100,255,0.3);
+        inset -16px -10px 30px rgba(0, 0, 0, 0.85), 
+        inset 8px 5px 20px rgba(255, 255, 255, 0.2),
+        0 0 40px rgba(0, 100, 255, 0.4);
+    animation: spinPlanet 8s linear infinite, planetPulse 2s infinite ease-in-out, counter-spin 25s linear infinite;
 }
 
 
@@ -176,70 +176,35 @@ body {
 
 /* MARS */
 .planet-1 {
-    background: radial-gradient(circle at 30% 30%,
-        #f4b183 0%,
-        #d97b43 35%,
-        #b34f2e 70%,
-        #6e2e1f 100%
-    );
-    box-shadow:
-        0 0 8px rgba(255, 180, 120, 0.8),
-        0 0 16px rgba(220, 110, 50, 0.6),
-        0 0 30px rgba(170, 60, 30, 0.4),
-        8px 12px 20px rgba(0, 0, 0, 0.45);
-    background-size: 200% 100%; 
+    background: radial-gradient(circle at 35% 35%, 
+    #f4b183 0%, #d97b43 35%, #b34f2e 70%, #6e2e1f 100%);
+    background-size: 200% 100%;
     animation: spinPlanet 20.5s linear infinite, planetPulse 2s infinite ease-in-out, counter-spin 6s linear infinite;
 }
 
-/* URANUS*/
 .planet-2 {
-    background: radial-gradient(circle at 35% 35%,
-        #d4f5f5 0%,
-        #7de8e8 25%,
-        #4db8cc 55%,
-        #2a7a8a 80%,
-        #1a5566 100%
-    );
-    box-shadow:
-        inset -15px -10px 30px rgba(0,0,0,0.6),
-        inset 8px 6px 20px rgba(200,240,255,0.4),
-        0 0 20px rgba(80,200,220,0.4);
-    background-size: 200% 100%; 
+    background: radial-gradient(circle at 35% 35%, 
+    #d4f5f5 0%, #7de8e8 25%, #4db8cc 55%, #2a7a8a 80%, #1a5566 100%);
+    background-size: 200% 100%;
     animation: spinPlanet 36s linear infinite, planetPulse 2s infinite ease-in-out, counter-spin 15s linear infinite;
 }
 
-/* NEPTUNE*/
 .planet-4 {
-    background: radial-gradient(circle at 35% 35%,
-        #8ab4ff 0%,
-        #4466dd 25%,
-        #2233aa 55%,
-        #111866 80%,
-        #080d44 100%
-    );
-    box-shadow:
-        inset -15px -10px 30px rgba(0,0,0,0.8),
-        inset 8px 6px 20px rgba(100,150,255,0.3),
-        0 0 20px rgba(50,80,200,0.5);
+    background: radial-gradient(circle at 35% 35%, 
+    #8ab4ff 0%, #4466dd 25%, #2233aa 55%, #111866 80%, #080d44 100%);
     background-size: 200% 100%;
     animation: spinPlanet 48s linear infinite, planetPulse 2s infinite ease-in-out, counter-spin 40s linear infinite;
 }
 
-/* SATURN*/
 .planet-5 {
-    background: radial-gradient(circle at 35% 35%,
-        #fff0aa 0%,
-        #ddcc77 25%,
-        #bbaa55 55%,
-        #887733 80%,
-        #554422 100%
-    );
-    box-shadow:
-        inset -15px -10px 30px rgba(0,0,0,0.6),
-        inset 8px 6px 20px rgba(255,240,150,0.3),
-        0 0 15px rgba(200,180,80,0.4);
-    animation: spinPlanet 24s linear infinite, counter-spin 60s linear infinite;
+    background: radial-gradient(circle at 35% 35%, 
+    #fff0aa 0%, #ddcc77 25%, #bbaa55 55%, #887733 80%, #554422 100%);
     background-size: 200% 100%;
+    box-shadow:
+        inset -15px -10px 25px rgba(0, 0, 0, 0.8),
+        inset 6px 4px 15px rgba(255, 240, 150, 0.3),
+        0 0 20px rgba(200, 180, 80, 0.4);
+    animation: spinPlanet 24s linear infinite, counter-spin 60s linear infinite;
 }
 
 @keyframes counter-spin {
@@ -255,7 +220,7 @@ body {
 
 .planet[data-planet]:hover {
     --planet-scale: 1.3;
-    box-shadow: 0 0 25px rgba(255,255,255,0.9);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
 }
 
 .planet[data-planet]:hover .planet-label {
@@ -289,7 +254,6 @@ body {
     50% { box-shadow: 0 0 20px rgba(255,255,255,0.8); }
     100% { box-shadow: 0 0 10px rgba(255,255,255,0.4); }
 }
-
 
 
 .intro-mp4 {
