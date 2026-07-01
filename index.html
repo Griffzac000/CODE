@@ -17,6 +17,7 @@
         <button onclick="openOverlay('projects')">Projects</button>
         <button onclick="openOverlay('case-studies')">Case Studies</button>
         <button onclick="openOverlay('contact')">Contact</button>
+        <button onclick="openOverlay('skills')">Skills</button>
     </nav>
 
     <div class="intro-screen" id="introScreen">
@@ -28,7 +29,7 @@
     </div>
 
     <div id="content-about" style="display:none">
-        <img src="avatar.jpg" alt="Zachai" class="profile">
+        <img src="images/avatar.jpg" alt="Zachai" class="profile">
         <h2>About Me</h2>
         <p>
             Hey! I'm Zachai, a passionate student who loves building cool things on the web.
@@ -44,20 +45,48 @@
         </p>
     </div>
 
+    <div id="content-skills" style="display:none">
+    <h2>My Coding Skills</h2>
+    <p>Here are the programming languages and tools I work with to build my projects:</p>
+    
+        <div class="skills-grid">
+            <div class="skill-card">
+                <img src="images/HTML.png" alt="HTML">
+                <h3>HTML</h3>
+                <p>Structuring clean, semantic, and accessible web layouts.</p>
+            </div>
+            <div class="skill-card">
+                <img src="images/CSS.png" alt="CSS">
+                <h3>CSS</h3>
+                <p>Crafting responsive layouts, custom layouts, animations, and visual styling.</p>
+            </div>
+            <div class="skill-card">
+                <img src="images/Javascript.png" alt="javascript">
+                <h3>JavaScript</h3>
+                <p>Building dynamic, interactive UI functionality and custom logic workflows.</p>
+            </div>
+            <div class="skill-card">
+                <img src="images/python.png" alt="python">
+                <h3>Python</h3>
+                <p>Writing clean scripts, handling backend concepts, and basic automation.</p>
+            </div>
+        </div>
+    </div>
+
     <div id="content-projects" style="display:none">
         <h2>Projects</h2>
         <p>A selection of things I've built.</p>
         <div class="project-grid">
             <div class="project-card">
                 <a href="https://griffzac000.github.io/int-u2-project-starter-code-3/">
-                    <img src="p2.png" alt="Project 1">
+                    <img src="images/p2.png" alt="Project 1">
                 </a>
                 <h3>Home page project</h3>
             </div>
             <div class="project-card">
                 <a
-                    href="file:///c%3A/Users/novat/OneDrive/Desktop/Nextech/int-u3-project-23-24-starter-code/index.html">
-                    <img src="Projects/Project1/Screenshot 2026-06-26 134434.png" alt="Project 1">
+                    href="https://griffzac000.github.io/int-u3-project-23-24-starter-code/">
+                    <img src="images/p3.png" alt="Project 2">
                 </a>
                 <h3>Game chooser project</h3>
             </div>
@@ -69,7 +98,7 @@
         <div class="project-grid">
             <div class="project-card">
                 <a class="card-bg-link" href="https://griffzac000.github.io/int-u2-project-starter-code-3/">
-                    <img src="p2.png" alt="Project 1">
+                    <img src="images/p2.png" alt="Project 1">
                 </a>
                 <h3>Case Study One</h3>
                 <p>An creative and visual experience on what I would make the home page about global warning.
@@ -80,13 +109,13 @@
             </div>
             <div class="project-card">
                 <a class="card-bg-link"
-                    href="file:///c%3A/Users/novat/OneDrive/Desktop/Nextech/int-u3-project-23-24-starter-code/index.html">
-                    <img src="Projects/Project1/Screenshot 2026-06-26 134434.png" alt="Project 1">
+                    href="https://griffzac000.github.io/int-u3-project-23-24-starter-code/">
+                    <img src="images/p3.png" alt="Project 2">
                 </a>
                 <h3>Case Study Two</h3>
                 <p>This was a creative UX design project that was a funny but complex take on how to look at designing a UX experience..</p>
                 <a class="card-visit-btn"
-                    href="file:///c%3A/Users/novat/OneDrive/Desktop/Nextech/int-u3-project-23-24-starter-code/index.html"
+                    href="https://griffzac000.github.io/int-u3-project-23-24-starter-code/"
                     target="_blank">View Project →</a>
             </div>
         </div>
@@ -116,7 +145,9 @@
                     </div>
                 </div>
                 <div class="orbit-ring ring-2">
-                    <div class="planet planet-2"></div>
+                    <div class="planet planet-2" data-planet="skills">
+                        <div class="planet-label">Skills</div>
+                    </div>
                 </div>
                 <div class="orbit-ring ring-3">
                     <div class="planet planet-3 earth" data-planet="about">

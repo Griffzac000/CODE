@@ -204,7 +204,7 @@ body {
         inset 8px 6px 20px rgba(200,240,255,0.4),
         0 0 20px rgba(80,200,220,0.4);
     background-size: 200% 100%; 
-    animation: spinPlanet 36s linear infinite, ;
+    animation: spinPlanet 36s linear infinite, planetPulse 2s infinite ease-in-out;
 }
 
 /* NEPTUNE*/
@@ -480,6 +480,48 @@ body {
 
 .contact-link:hover {
     background: rgba(255,255,255,0.15);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    /* Colors match the bright cyan glow of Planet 2 */
+    border-color: rgba(125, 232, 232, 0.6); 
+    box-shadow: 0 5px 15px rgba(125, 232, 232, 0.25);
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.skill-card h3 {
+    margin: 5px 0;
+    font-size: 1.2rem;
+    color: #7de8e8; /* Cyan header match */
+}
+
+.skill-card p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.4;
 }
 
 
