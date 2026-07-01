@@ -6,6 +6,7 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
+
 .stars {
     position: fixed;
     inset: 0;
@@ -29,6 +30,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    pointer-events: none;
 }
 
 .center {
@@ -36,34 +38,63 @@ body {
     transform: rotateX(55deg) scale(1.8);
 }
 
-#earth {
-    width: 150px;
-    height: 150px;
+#sun {
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotateX(-55deg);
     z-index: 10;
     overflow: hidden;
-    box-shadow:
-        inset -30px -10px 60px rgba(0,0,0,0.7),
-        inset 10px 5px 40px rgba(255,255,255,0.1),
-        0 0 60px rgba(0,100,255,0.3);
-    background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgclfTNkUcsfC0c2bVoKVjELv2pki_YYLCSD99BpC5IfzU9W9sH6kG7JcF07c6bxsVD4LnAH2PDkUQrN24mT_uedwjGm6onOmAJNMRbptuzkgAXqsTVFbFB4W6XkPaGuwDpflBf6ULJQhKs/w1200-h630-p-k-no-nu/1.jpg);
-    animation: rotate 20s linear infinite;
+    background-image: url('sun.mp4');
+    background-size: 200% 200%; 
+    background-position: center;
+    cursor: pointer;
+    box-shadow: 
+        inset 0 0 40px rgba(255, 255, 255, 0.6),
+        inset 0 0 80px rgba(255, 120, 0, 0.8),
+        0 0 30px rgba(255, 170, 0, 0.8),
+        0 0 70px rgba(255, 90, 0, 0.5),
+        0 0 150px rgba(255, 60, 0, 0.3);
+    transition: box-shadow 0.4s ease, transform 0.08s ease;
 }
 
-#earth:hover {
+#sun:hover {
     background-color: #ffffffbb;
     transition: background-color 1.5s ease;
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.1, 0.5);
 }
 
-@keyframes rotate {
-    from { background-position: 0 center; }
-    to   { background-position: -600px center; }
+.space-nav {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50; /* Sits securely above the space canvas */
+    display: flex;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 }
+
+.space-nav button {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: sans-serif;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.space-nav button:hover {
+    color: white;
+}
+
 
 .orbit-ring {
     position: absolute;
@@ -73,36 +104,36 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     animation: spin linear infinite;
+    pointer-events: none;
+}
+
+.orbit-ring:has(.planet:hover) {
+    animation-play-state: paused;
 }
 
 .ring-1 { width: 300px; height: 300px; animation-duration: 6s; }
-.ring-2 { width: 450px; height: 450px; animation-duration: 10s; }
-.ring-3 { width: 600px; height: 600px; animation-duration: 14s; }
-.ring-4 { width: 750px; height: 750px; animation-duration: 18s; }
-.ring-5 { width: 900px; height: 900px; animation-duration: 22s; }
+.ring-2 { width: 450px; height: 450px; animation-duration: 15s; }
+.ring-3 { width: 600px; height: 600px; animation-duration: 25s; }
+.ring-4 { width: 750px; height: 750px; animation-duration: 40s; }
+.ring-5 { width: 900px; height: 900px; animation-duration: 60s; }
 
 @keyframes spin {
     from { transform: translate(-50%, -50%) rotate(0deg); }
     to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-.planet {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    top: 50%;
-    left: 0;
-    transform: translate(-50%, -50%);
-    z-index: 20;
-    box-shadow: 0 0 10px rgba(255,255,255,0.6);
+
+
+.earth {
+    background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgclfTNkUcsfC0c2bVoKVjELv2pki_YYLCSD99BpC5IfzU9W9sH6kG7JcF07c6bxsVD4LnAH2PDkUQrN24mT_uedwjGm6onOmAJNMRbptuzkgAXqsTVFbFB4W6XkPaGuwDpflBf6ULJQhKs/w1200-h630-p-k-no-nu/1.jpg);
+    background-size: 200% 100%; 
+    animation: spinPlanet 8s linear infinite;
+    box-shadow:
+        inset -30px -10px 60px rgba(0,0,0,0.7),
+        inset 10px 5px 40px rgba(255,255,255,0.1),
+        0 0 60px rgba(0,100,255,0.3);
 }
 
-.planet-1 { background: orange; }
-.planet-2 { background: lightblue; }
-.planet-3 { background: green; }
-.planet-4 { background: purple; }
-.planet-5 { background: tan; }
 
 .intro-screen {
     position: fixed;
@@ -113,6 +144,152 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+}
+
+
+.planet {
+    position: absolute;
+    width: 55px;
+    height: 60px;
+    border-radius: 50%;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    box-shadow: 0 0 10px rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    pointer-events: all;
+
+}
+
+.planet::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 50%;
+}
+
+/* MARS */
+.planet-1 {
+    background: radial-gradient(circle at 30% 30%,
+        #f4b183 0%,
+        #d97b43 35%,
+        #b34f2e 70%,
+        #6e2e1f 100%
+    );
+    box-shadow:
+        0 0 8px rgba(255, 180, 120, 0.8),
+        0 0 16px rgba(220, 110, 50, 0.6),
+        0 0 30px rgba(170, 60, 30, 0.4),
+        8px 12px 20px rgba(0, 0, 0, 0.45);
+    background-size: 200% 100%; 
+    animation: spinPlanet 20.5s linear infinite;
+}
+
+/* URANUS*/
+.planet-2 {
+    background: radial-gradient(circle at 35% 35%,
+        #d4f5f5 0%,
+        #7de8e8 25%,
+        #4db8cc 55%,
+        #2a7a8a 80%,
+        #1a5566 100%
+    );
+    box-shadow:
+        inset -15px -10px 30px rgba(0,0,0,0.6),
+        inset 8px 6px 20px rgba(200,240,255,0.4),
+        0 0 20px rgba(80,200,220,0.4);
+    background-size: 200% 100%; 
+    animation: spinPlanet 36s linear infinite;
+}
+
+/* NEPTUNE*/
+.planet-4 {
+    background: radial-gradient(circle at 35% 35%,
+        #8ab4ff 0%,
+        #4466dd 25%,
+        #2233aa 55%,
+        #111866 80%,
+        #080d44 100%
+    );
+    box-shadow:
+        inset -15px -10px 30px rgba(0,0,0,0.8),
+        inset 8px 6px 20px rgba(100,150,255,0.3),
+        0 0 20px rgba(50,80,200,0.5);
+    background-size: 200% 100%;
+    animation: spinPlanet 48s linear infinite;
+}
+
+/* SATURN*/
+.planet-5 {
+    background: radial-gradient(circle at 35% 35%,
+        #fff0aa 0%,
+        #ddcc77 25%,
+        #bbaa55 55%,
+        #887733 80%,
+        #554422 100%
+    );
+    box-shadow:
+        inset -15px -10px 30px rgba(0,0,0,0.6),
+        inset 8px 6px 20px rgba(255,240,150,0.3),
+        0 0 15px rgba(200,180,80,0.4);
+    animation: spinPlanet 24s linear infinite;
+    background-size: 200% 100%;
+}
+
+@keyframes spinPlanet {
+    from { background-position: 0% center; }
+    to   { background-position: 200% center; }
+}
+
+
+.planet[data-planet] {
+    transform: translate(-50%, -50%) rotateX(-55deg);
+}
+
+.planet[data-planet]:hover {
+    transform: translate(-50%, -50%) rotateX(-55deg) scale(1.4);
+    box-shadow: 0 0 25px rgba(255,255,255,0.9);
+}
+
+.planet[data-planet]:hover .planet-label {
+    opacity: 1;
+}
+
+
+.planet-label {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.planet[data-planet] {
+    cursor: pointer;
+}
+
+@keyframes planetPulse {
+    0% { box-shadow: 0 0 10px rgba(255,255,255,0.4); }
+    50% { box-shadow: 0 0 20px rgba(255,255,255,0.8); }
+    100% { box-shadow: 0 0 10px rgba(255,255,255,0.4); }
+}
+
+.planet[data-planet] {
+    animation: planetPulse 2s infinite ease-in-out;
 }
 
 .intro-mp4 {
@@ -138,7 +315,6 @@ body {
     text-shadow: 0 0 20px rgba(255,255,255,0.8);
 }
 
-/* first line: zooms in from far away, holds, then zooms back out */
 .line-1 {
     font-size: 5rem;
     animation: textTravel 2s ease-in-out forwards;
@@ -152,14 +328,13 @@ body {
 }
 
 @keyframes textTravel {
-    0%   { opacity: 0; transform: scale(0.2); }   /* far away, invisible */
-    20%  { opacity: 1; transform: scale(1.2); }   /* flies toward viewer, overshoots slightly */
-    30%  { opacity: 1; transform: scale(1); }     /* settles to normal size */
-    70%  { opacity: 1; transform: scale(1); }     /* holds in place */
-    100% { opacity: 0; transform: scale(2.5); }   /* flies past viewer, fades out */
+    0%   { opacity: 0; transform: scale(0.2); }   
+    20%  { opacity: 1; transform: scale(1.2); }   
+    30%  { opacity: 1; transform: scale(1); }     
+    70%  { opacity: 1; transform: scale(1); }     
+    100% { opacity: 0; transform: scale(2.5); }   
 }
 
-/* fades out the whole intro screen once it's done */
 .intro-screen.fade-out {
     animation: fadeOutScreen 1.5s ease forwards;
     pointer-events: none;
@@ -168,4 +343,162 @@ body {
 @keyframes fadeOutScreen {
     from { opacity: 1; }
     to   { opacity: 0; }
+}
+
+.planet-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.planet-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.planet-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 0;
+}
+
+
+.overlay-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    width: 90%;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: rgba(10, 10, 20, 0.85);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.overlay-content h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.overlay-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 15px;
+}
+
+.overlay-content img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.3);
+    margin-bottom: 15px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.project-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px;
+    
+}
+
+
+.project-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 5px;
+}
+
+.project-card img:hover {
+    transform: scale(1.05);
+
+}
+
+.project-card h3 {
+    margin: 0 0 6px;
+    font-size: 0.95rem;
+    color: white;
+}
+
+.project-card p {
+    font-size: 0.8rem;
+    margin: 0;
+    color: rgba(255,255,255,0.6);
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.2s ease;
+}
+
+.contact-link:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+
+.return-btn {
+    position: relative;
+    z-index: 2;
+    margin-top: 25px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+}
+
+.return-btn:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
 }

@@ -6,42 +6,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="case-studies.css">
     <script defer src="script.js"></script>
 </head>
 
 <body>
+
+    <nav class="space-nav">
+        <button onclick="openOverlay('about')">About</button>
+        <button onclick="openOverlay('projects')">Projects</button>
+        <button onclick="openOverlay('case-studies')">Case Studies</button>
+        <button onclick="openOverlay('contact')">Contact</button>
+    </nav>
+
     <div class="intro-screen" id="introScreen">
-        <video src="intro.mp4" class="intro-mp4" autoplay loop muted playsinline></video>
+        <video class="intro-mp4" src="intro.mp4" autoplay loop muted playsinline></video>
         <div class="intro-text">
             <h1 class="line-1">Hello I'm Zachai</h1>
             <h2 class="line-2">And this is my portfolio.</h2>
         </div>
     </div>
 
+    <div id="content-about" style="display:none">
+        <img src="avatar.jpg" alt="Zachai" class="profile">
+        <h2>About Me</h2>
+        <p>
+            Hey! I'm Zachai, a passionate developer who loves building cool things on the web.
+            I thrive on creative challenges and turning ideas into polished digital experiences.
+        </p>
+        <p>
+            When I'm not coding I enjoy exploring new technologies, gaming, and designing
+            visual experiences that push the boundaries of what's possible in a browser.
+        </p>
+        <p>
+            I'm currently looking for opportunities to collaborate on exciting projects —
+            feel free to reach out!
+        </p>
+    </div>
+
+    <div id="content-projects" style="display:none">
+        <h2>Projects</h2>
+        <p>A selection of things I've built.</p>
+        <div class="project-grid">
+            <div class="project-card">
+                <a href="https://griffzac000.github.io/int-u2-project-starter-code-3/">
+                    <img src="p2.png" alt="Project 1">
+                </a>
+                <h3>Project 1</h3>
+            </div>
+            <div class="project-card">
+                <a
+                    href="file:///c%3A/Users/novat/OneDrive/Desktop/Nextech/int-u3-project-23-24-starter-code/index.html">
+                    <img src="Projects/Project1/Screenshot 2026-06-26 134434.png" alt="Project 1">
+                </a>
+                <h3>Project 2</h3>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="content-case-studies" style="display:none">
+        <div class="project-grid">
+            <div class="project-card">
+                <a class="card-bg-link" href="https://griffzac000.github.io/int-u2-project-starter-code-3/">
+                    <img src="p2.png" alt="Project 1">
+                </a>
+                <h3>Case Study One</h3>
+                <p>An in-depth breakdown of the problem, process, and solution.</p>
+                <a class="card-visit-btn" href="https://griffzac000.github.io/int-u2-project-starter-code-3/"
+                    target="_blank">View Project →</a>
+            </div>
+            <div class="project-card">
+                <a class="card-bg-link"
+                    href="file:///c%3A/Users/novat/OneDrive/Desktop/Nextech/int-u3-project-23-24-starter-code/index.html">
+                    <img src="Projects/Project1/Screenshot 2026-06-26 134434.png" alt="Project 1">
+                </a>
+                <h3>Case Study Two</h3>
+                <p>How I approached a complex UX challenge from research to final design.</p>
+                <a class="card-visit-btn"
+                    href="file:///c%3A/Users/novat/OneDrive/Desktop/Nextech/int-u3-project-23-24-starter-code/index.html"
+                    target="_blank">View Project →</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-contact" style="display:none">
+        <h2>Contact Me</h2>
+        <p>I'd love to hear from you — whether it's a project, a question, or just a hello.</p>
+        <div class="contact-links">
+            <a class="contact-link" href="mailto:zachai@email.com">
+                <span class="icon"></span>
+                griffinzachai610@gmail.com
+            </a>
+        </div>
+    </div>
+
+
     <div class="stars" id="stars"></div>
 
     <div class="space-wrapper">
         <div class="space-canvas">
+            <div id="sun" data-planet="contact"></div>
             <div class="center">
-                <div id="earth"></div>
-
                 <div class="orbit-ring ring-1">
-                    <div class="planet planet-1"></div>
+                    <div class="planet planet-1" data-planet="projects">
+                        <div class="planet-label">Projects</div>
+                    </div>
                 </div>
                 <div class="orbit-ring ring-2">
                     <div class="planet planet-2"></div>
                 </div>
                 <div class="orbit-ring ring-3">
-                    <div class="planet planet-3"></div>
+                    <div class="planet planet-3 earth" data-planet="about">
+                        <div class="planet-label">About Me</div>
+                    </div>
                 </div>
                 <div class="orbit-ring ring-4">
-                    <div class="planet planet-4"></div>
+                    <div class="planet planet-4" data-planet="case-studies">
+                        <div class="planet-label">Case Studies</div>
+                    </div>
                 </div>
                 <div class="orbit-ring ring-5">
-                    <div class="planet planet-5"></div>
+                    <div class="planet planet-5">
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="planet-overlay" id="planetOverlay">
+        <div class="overlay-content" id="overlayContent"></div>
+        <button class="return-btn" id="returnBtn">Return to Solar System</button>
     </div>
 </body>
 
