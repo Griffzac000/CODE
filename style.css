@@ -127,7 +127,7 @@ body {
 .earth {
     background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgclfTNkUcsfC0c2bVoKVjELv2pki_YYLCSD99BpC5IfzU9W9sH6kG7JcF07c6bxsVD4LnAH2PDkUQrN24mT_uedwjGm6onOmAJNMRbptuzkgAXqsTVFbFB4W6XkPaGuwDpflBf6ULJQhKs/w1200-h630-p-k-no-nu/1.jpg);
     background-size: 200% 100%; 
-    animation: spinPlanet 8s linear infinite;
+    animation: spinPlanet 8s linear infinite, planetPulse 2s infinite ease-in-out;
     box-shadow:
         inset -30px -10px 60px rgba(0,0,0,0.7),
         inset 10px 5px 40px rgba(255,255,255,0.1),
@@ -187,7 +187,7 @@ body {
         0 0 30px rgba(170, 60, 30, 0.4),
         8px 12px 20px rgba(0, 0, 0, 0.45);
     background-size: 200% 100%; 
-    animation: spinPlanet 20.5s linear infinite;
+    animation: spinPlanet 20.5s linear infinite, planetPulse 2s infinite ease-in-out;
 }
 
 /* URANUS*/
@@ -204,7 +204,7 @@ body {
         inset 8px 6px 20px rgba(200,240,255,0.4),
         0 0 20px rgba(80,200,220,0.4);
     background-size: 200% 100%; 
-    animation: spinPlanet 36s linear infinite;
+    animation: spinPlanet 36s linear infinite, ;
 }
 
 /* NEPTUNE*/
@@ -221,7 +221,7 @@ body {
         inset 8px 6px 20px rgba(100,150,255,0.3),
         0 0 20px rgba(50,80,200,0.5);
     background-size: 200% 100%;
-    animation: spinPlanet 48s linear infinite;
+    animation: spinPlanet 48s linear infinite, planetPulse 2s infinite ease-in-out;
 }
 
 /* SATURN*/
@@ -289,7 +289,8 @@ body {
 }
 
 .planet[data-planet] {
-    animation: planetPulse 2s infinite ease-in-out;
+    cursor: pointer;
+    /* animation: planetPulse 2s infinite ease-in-out; */
 }
 
 .intro-mp4 {
