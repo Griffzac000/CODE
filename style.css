@@ -48,7 +48,7 @@ body {
     transform: translate(-50%, -50%) rotateX(-55deg);
     z-index: 10;
     overflow: hidden;
-    background-image: url('sun.mp4');
+    background-image: url('https://media4.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bjJ3bTMwNHExcWY3bzUyaDJpdDBrZXFyOTNkMG9udmg4dHp0aGIyeSZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/ctGFLebG1AqK4/giphy.webp');
     background-size: 200% 200%; 
     background-position: center;
     cursor: pointer;
